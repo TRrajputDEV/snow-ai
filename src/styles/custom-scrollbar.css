@@ -1,0 +1,49 @@
+/* src/styles/custom-scrollbar.css */
+
+/* Custom scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9 !important;
+  border-radius: 10px !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #94a3b8 !important;
+  border-radius: 10px !important;
+  border: 2px solid #f1f5f9 !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #64748b !important;
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin !important;
+  scrollbar-color: #94a3b8 #f1f5f9 !important;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #1e293b !important;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #475569 !important;
+    border: 2px solid #1e293b !important;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #64748b !important;
+  }
+
+  /* For Firefox */
+  .custom-scrollbar {
+    scrollbar-color: #475569 #1e293b !important;
+  }
+}

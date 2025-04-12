@@ -1,16 +1,92 @@
 @import "tailwindcss";
 
 :root {
-  --foreground-rgb: 248, 249, 250;
-  --background-rgb: 10, 10, 11;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
-  min-height: 100vh;
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
-.dark-gradient {
-  background: linear-gradient(145deg, #0A0A0B 0%, #111827 100%);
+/* Custom scrollbar styles */
+.chat-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-container::-webkit-scrollbar-track {
+  background: #f7fafc; /* Tailwind gray-100 */
+  border-radius: 8px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+  background: #cbd5e0; /* Tailwind gray-400 */
+  border-radius: 8px;
+}
+
+.chat-container::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0; /* Tailwind gray-500 */
+}
+
+/* Dark mode scrollbar */
+@media (prefers-color-scheme: dark) {
+  .chat-container::-webkit-scrollbar-track {
+    background: #2d3748; /* Tailwind gray-800 */
+  }
+  
+  .chat-container::-webkit-scrollbar-thumb {
+    background: #4a5568; /* Tailwind gray-700 */
+  }
+  
+  .chat-container::-webkit-scrollbar-thumb:hover {
+    background: #718096; /* Tailwind gray-600 */
+  }
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+@media (prefers-color-scheme: dark) {
+  * {
+    scrollbar-color: #4a5568 #2d3748;
+  }
+}
+
+/* Utility for markdown content */
+.prose pre {
+  padding: 0 !important;
+  margin: 1rem 0 !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
+}
+
+/* Remove default marker styling and use custom styling for lists */
+.prose ul li::marker,
+.prose ol li::marker {
+  color: #3b82f6; /* Tailwind blue-500 */
+}
+
+@media (prefers-color-scheme: dark) {
+  .prose ul li::marker,
+  .prose ol li::marker {
+    color: #60a5fa; /* Tailwind blue-400 */
+  }
 }
